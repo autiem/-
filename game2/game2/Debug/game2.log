@@ -1,0 +1,21 @@
+﻿  game2.c
+D:\C语言课程\game2\game2\game2.c(107,35): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(111,39): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(112,26): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(119,39): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(120,26): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(127,39): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(128,26): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(135,43): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(136,26): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(143,43): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(144,26): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(151,43): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(152,26): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(159,39): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(160,26): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(167,43): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+D:\C语言课程\game2\game2\game2.c(168,26): warning C4048: “char (*)[11]”和“char (*)[9]”数组的下标不同
+  test2.c
+  正在生成代码...
+  game2.vcxproj -> D:\C语言课程\game2\Debug\game2.exe
