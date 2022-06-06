@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
-#define MAX 1000
+//#define MAX 1000
+
+#define DEFAULT_SZ 3
 
 #define MAX_NAME 20
 #define MAX_SEX 5
@@ -9,6 +11,7 @@
 
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
 enum Option
 {
@@ -20,22 +23,23 @@ enum Option
 	SHOW,
 	SORT
 };
-struct PeoInfo
+typedef struct PeoInfo
 {
 	char name[MAX_NAME];
 	int age;
 	char sex[MAX_SEX];
 	char tele[MAX_TELE];
 	char addr[MAX_ADDR];
-};
+}PeoInfo;
 
 
 //通讯录类型
-struct Contact
+typedef struct Contact
 {
-	struct PeoInfo data[MAX];//存放一个信息
+	struct PeoInfo* data;//存放一个信息
 	int size;//记录当前已经有的元素个数
-};
+	int capacity;//当前通讯录的最大容量  
+}Contact;
 
 //声明函数
 //初始化通讯录的函数
@@ -52,3 +56,5 @@ void SearchCnotact(const struct Contact* ps);
 void ModifyCnotact(struct Contact* ps);
 //排序通讯录内容
 void SortContact(struct Contact* ps);
+//销毁通讯录
+void DestoryContact(Contact*ps);

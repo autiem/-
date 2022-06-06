@@ -16,7 +16,7 @@ int main()
 {
 	int input = 0;
 	//创建通讯录
-	struct Contact con;//con就是通讯录，里面包含：1000个元素的数和size
+	struct Contact con;//con就是通讯录，里面包含：data指针和size，capacity
 	//初始化通讯录
 	InitContact(&con);
 	do
@@ -46,6 +46,8 @@ int main()
 			SortContact(&con);
 			break;
 		case EXIT:
+			//销毁通讯录 - 释放动态开辟的内存
+			DestoryContact(&con);
 			printf("退出通讯录\n");
 			break;
 		default:

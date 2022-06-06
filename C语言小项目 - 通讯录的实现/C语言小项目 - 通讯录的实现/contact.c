@@ -5,31 +5,51 @@
 
 void InitContact(struct Contact* ps)
 {
-	memset(ps->data,0,sizeof(ps->data));
-	ps->size = 0;//设置通讯录最初只有0个元素
+	ps->data = (struct PeoInfo*)malloc(3 * sizeof(struct PeoInfo));
+	if (ps->data == NULL)
+	{
+		return;
+	}
+	ps->size = 0;
+	ps->capacity = DEFAULT_SZ;
 }
-
+void CheckCapaticty(struct Contact* ps)
+{
+	if (ps->size == ps->capacity)
+	{
+		//增容
+		struct PeoInfo* ptr = realloc(ps->data, (ps->capacity + 2) * sizeof(PeoInfo));
+		if (ptr != NULL)
+		{
+			ps->data = ptr;
+			ps->capacity += 2;
+			printf("增容成功\n");
+		}
+		else
+		{
+			printf("增容失败\n");
+		}
+	}
+}
 void AddContact(struct Contact* ps)
 {
-	if (ps->size == MAX)
-	{
-		printf("通讯录已满，无法增加\n");
-	}
-	else
-	{
-		printf("请输入名字:>");
-		scanf("%s", ps->data[ps->size].name);
-		printf("请输入年龄:>");
-		scanf("%d", &(ps->data[ps->size].age));
-		printf("请输入性别:>");
-		scanf("%s", ps->data[ps->size].sex);
-		printf("请输入电话:>");
-		scanf("%s", ps->data[ps->size].tele);
-		printf("请输入地址:>");
-		scanf("%s", ps->data[ps->size].addr);
-		ps->size++;
-		printf("添加成功\n");
-	}
+	//检测当前通讯录的容量
+	//1.如果满了，就增加空间
+	//2.如果不满，就不进行操作
+	CheckCapaticty(ps);
+	//增加数据
+	printf("请输入名字:>");
+	scanf("%s", ps->data[ps->size].name);
+	printf("请输入年龄:>");
+	scanf("%d", &(ps->data[ps->size].age));
+	printf("请输入性别:>");
+	scanf("%s", ps->data[ps->size].sex);
+	printf("请输入电话:>");
+	scanf("%s", ps->data[ps->size].tele);
+	printf("请输入地址:>");
+	scanf("%s", ps->data[ps->size].addr);
+	ps->size++;
+	printf("添加成功\n");
 }
 
 void ShowContact(const struct Contact* ps)
@@ -67,13 +87,14 @@ static int FindByName(const struct Contact* ps, char name[MAX_NAME])
 }
 void DelContact(struct Contact* ps)
 {
+	int pos = 0;
 	char name[MAX_NAME];
 	printf("请输入要删除的对象名:>");
 	scanf("%s", name);
 	//1.查找要删除的人在什么位置
 	//找到了返回名字所在元素下标
 	// 找不到返回-1
-	int pos = FindByName(ps,name);
+	pos = FindByName(ps, name);
 	//2.删除
 	if (pos==-1)
 	{
@@ -94,10 +115,11 @@ void DelContact(struct Contact* ps)
 
 void SearchCnotact(const struct Contact* ps)
 {
+	int pos = 0;
 	char name[MAX_NAME];
 	printf("请输入要查找的对象名:>");
 	scanf("%s", name);
-	int pos = FindByName(ps, name);
+	pos = FindByName(ps, name);
 	if (pos == -1)
 	{
 		printf("查找的对象名不存在\n");
@@ -115,10 +137,11 @@ void SearchCnotact(const struct Contact* ps)
 }
 void ModifyCnotact(struct Contact* ps)
 {
+	int pos = 0;
 	char name[MAX_NAME];
 	printf("请输入需要修改的对象名:>");
 	scanf("%s", name);
-	int pos = FindByName(ps, name);
+	pos = FindByName(ps, name);
 	if (pos == -1)
 	{
 		printf("查找的对象名不存在\n");
@@ -137,4 +160,24 @@ void ModifyCnotact(struct Contact* ps)
 		scanf("%s", ps->data[pos].addr);
 		printf("修改完成\n");
 	}
+}
+
+
+int compare_Peo(const void* e1, const void* e2)
+{
+	return strcmp(((PeoInfo*)e1)->name, ((PeoInfo*)e2)->name);
+}
+
+void SortContact(struct Contact* ps)
+{
+
+	qsort(ps->data, ps->size, sizeof(ps->data[0]), compare_Peo);
+	printf("排序成功\n");
+	ShowContact(ps);
+}
+
+void DestoryContact(Contact* ps)
+{
+	free(ps->data);
+	ps->data = NULL;
 }
