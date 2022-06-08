@@ -9,7 +9,7 @@ void menu()
 	printf("***** 1.add             2.del    ******\n");
 	printf("***** 3.serch           4.modfiy ******\n");
 	printf("***** 5.show            6.sort   ******\n");
-	printf("***** 0.exit                     ******\n");
+	printf("***** 7.save            0.exit   ******\n");
 	printf("***************************************\n");
 }
 int main()
@@ -47,8 +47,12 @@ int main()
 			break;
 		case EXIT:
 			//销毁通讯录 - 释放动态开辟的内存
+			SaveContact(&con);
 			DestoryContact(&con);
 			printf("退出通讯录\n");
+			break;
+		case SAVE:
+			SaveContact(&con);
 			break;
 		default:
 			printf("选择错误\n");

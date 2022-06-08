@@ -12,6 +12,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include<errno.h>
 
 enum Option
 {
@@ -21,7 +22,8 @@ enum Option
 	SEARCH,
 	MODIFY,
 	SHOW,
-	SORT
+	SORT,
+	SAVE
 };
 typedef struct PeoInfo
 {
@@ -58,3 +60,7 @@ void ModifyCnotact(struct Contact* ps);
 void SortContact(struct Contact* ps);
 //销毁通讯录
 void DestoryContact(Contact*ps);
+//保存文件
+void SaveContact(Contact* ps);
+//加载文件中的信息到通讯录
+void LoadContact(Contact* ps);
